@@ -1,0 +1,9 @@
+Building Zvrcoin
+
+See doc/readme-qt.rst for instructions on building Zvrcoin-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Zvrcoin.
+
+See doc/build-*.txt for instructions on building zvrcoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Zvrcoin.
