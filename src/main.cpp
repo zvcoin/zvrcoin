@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0x098a4d6ce739cfe9ee40ef3458131f1621ea572f6c28c3488555cb28e3b16c6b");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Zvrcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2746,7 +2746,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc3;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0x");
+        hashGenesisBlock = uint256("0x098a4d6ce739cfe9ee40ef3458131f1621ea572f6c28c3488555cb28e3b16c6b");
     }
 
     //
@@ -2793,12 +2793,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1508828352;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 0;
+        block.nNonce   = 1377031;
 
         if (fTestNet)
         {
             block.nTime    = 1508828352;
-            block.nNonce   = 0;
+            block.nNonce   = 1377031;
         }
 
         //// debug print
@@ -2806,7 +2806,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x"));
+        assert(block.hashMerkleRoot == uint256("0x8c7b981510e38d4d53f7c34eb14f6d65e895262a2de990debf5caf23592c72bb"));
 		
 		if (true && block.GetHash() != hashGenesisBlock)
 		        {
