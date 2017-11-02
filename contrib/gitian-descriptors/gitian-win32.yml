@@ -12,13 +12,12 @@ packages:
 - "nsis"
 - "faketime"
 reference_datetime: "2011-01-30 00:00:00"
-remotes:
-- "url": "https://github.com/zvrcoin-project/zvrcoin.git"
-  "dir": "zvrcoin"
+remotes: []
 files:
 - "qt-win32-4.8.5-gitian-r7.zip"
 - "boost-win32-1.55.0-gitian-r6.zip"
 - "bitcoin08-deps-win32-gitian-r12.zip"
+- "zvrcoin.zip"
 script: |
   #
   STAGING=$HOME/staging
@@ -31,10 +30,11 @@ script: |
   unzip ../build/bitcoin08-deps-win32-gitian-r12.zip
   cd $HOME/build/
   #
+  unzip zvrcoin.zip
   cd zvrcoin
+  cp -r zvrcoin $OUTDIR/src
+  cp -r litecoin nsis
   export PATH=$STAGING/host/bin:$PATH
-  mkdir -p $OUTDIR/src
-  git archive HEAD | tar -x -C $OUTDIR/src
   cp $OUTDIR/src/doc/README_windows.txt $OUTDIR/readme.txt
   cp $OUTDIR/src/COPYING $OUTDIR/COPYING.txt
   export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
@@ -55,8 +55,7 @@ script: |
   mkdir $OUTDIR/daemon
   cp zvrcoind.exe $OUTDIR/daemon
   cd ..
-  mkdir nsis
-  git archive HEAD | tar -x -C nsis
+  mv ../nsis .
   cd nsis/src
   mkdir ../release
   cp ../../release/* ../release/
